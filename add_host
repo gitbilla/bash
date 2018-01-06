@@ -1,0 +1,17 @@
+
+#!/bin/sh
+echo "Backing the file with todays date"
+NOW=$(date '+%Y%m%d')
+echo " This is the file /home/ab093568L/SORTING/sort.txt.$NOW "
+cp  /home/ab093568L/SORTING/sort.txt /home/ab093568L/SORTING/sort.txt.$NOW
+hostn=$(cat /home/ab093568L/SORTING/sort.txt > /dev/null)
+echo "Enter new hostname: "
+read newhost
+if grep -qF "$newhost" /home/ab093568L/SORTING/sort.txt;then
+        echo " $newhost Found"
+        echo " exiting the script"
+else
+        echo "$newhost not Found"
+        echo -n " Added the hostname $newhost "
+sed -i "$ a $newhost" /home/ab093568L/SORTING/sort.txt
+fi
