@@ -1,4 +1,11 @@
 #!/bin/bash
+#[root@rhel-vm SHELL]# [ -d /var/log ] && echo "Directory exist" || echo "Directory does not exist"
+#Directory exist
+#[root@rhel-vm SHELL]# [ -f /etc/passwd ] && echo "File exists" || echo "File does not exits"
+#File exists
+# ***********USE this script by passing aruguments*************
+#./filefind1 file_name dir_name
+
 FILE="$1"
  
 if [ -f "$FILE" ];
