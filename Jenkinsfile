@@ -25,5 +25,22 @@ sar -r -f $file | awk \'/Average:/{printf("Memory Average: %.2f%\\n"),(($3-$5-$6
       }
     }
 
+    stage('Application test') {
+      steps {
+        sh '''#!/bin/bash
+systemctl status jenkins > /dev/null
+if [ $? == 0 ]
+then
+echo "Jenkins is running"
+fi
+systemctl status nginx > /dev/null
+if [ $? == 0 ]
+then
+echo "nginx is running"
+fi
+'''
+      }
+    }
+
   }
 }
